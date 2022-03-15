@@ -115,4 +115,7 @@ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.
 java.base/java.lang.Thread.run(Thread.java:834)
 ```
 
+You can run it using Beam 2.35.0 by updating `build.sbt` to set `beamVersion` to `2.35.0` *and* `scioVersion` to `0.11.4` (Scio version must correspond to Beam version).
+
+
 This project is based on the [scio.g8](https://github.com/spotify/scio.g8).
