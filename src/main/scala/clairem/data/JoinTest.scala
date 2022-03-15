@@ -33,13 +33,13 @@ object JoinTest {
     // Contrive data to get large key groups
     val lhs: PCollection[KV[String, String]] = sc
       .jsonFile[Edit]("gs://dataflow-samples/wikipedia_edits/wiki_data-0000000001*")
-      .map { edit => KV.of((edit.num_characters % 1000).toString, edit.id) }
+      .map { edit => KV.of((edit.num_characters % 250).toString, edit.id) } // % 1000 produced key groups too small to trigger error
       .internal // to PCollection
       .setCoder(KvCoder.of(StringUtf8Coder.of(), StringUtf8Coder.of()))
 
     val rhs: PCollection[KV[String, String]] = sc
       .jsonFile[Edit]("gs://dataflow-samples/wikipedia_edits/*")
-      .map { edit => KV.of((edit.timestamp % 1000).toString, edit.title) }
+      .map { edit => KV.of((edit.timestamp % 250).toString, edit.title) } // % 1000 produced key groups too small to trigger error
       .internal // to PCollection
       .setCoder(KvCoder.of(StringUtf8Coder.of(), StringUtf8Coder.of()))
 
