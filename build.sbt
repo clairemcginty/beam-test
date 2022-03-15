@@ -1,7 +1,7 @@
 import sbt._
 import Keys._
-val scioVersion = "0.11.4"
-val beamVersion = "2.35.0"
+val scioVersion = "0.11.5"
+val beamVersion = "2.36.0"
 lazy val commonSettings = Def.settings(
   organization := "clairem.data",
   // Semantic versioning http://semver.org/
