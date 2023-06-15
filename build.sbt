@@ -1,7 +1,10 @@
 import sbt._
 import Keys._
-val scioVersion = "0.11.5"
-val beamVersion = "2.36.0"
+
+val scioVersion = "0.12.8"
+val beamVersion = "2.46.0"
+val magnolifyVersion = "0.6.2"
+
 lazy val commonSettings = Def.settings(
   organization := "clairem.data",
   // Semantic versioning http://semver.org/
@@ -28,6 +31,8 @@ lazy val root: Project = project
     run / fork := true,
     libraryDependencies ++= Seq(
       "com.spotify" %% "scio-core" % scioVersion,
+      "com.spotify" %% "scio-google-cloud-platform" % scioVersion,
+      "com.spotify" %% "magnolify-bigquery" % magnolifyVersion,
       "com.spotify" %% "scio-extra" % scioVersion,
       "com.spotify" %% "scio-test" % scioVersion % Test,
       "org.apache.beam" % "beam-runners-direct-java" % beamVersion,

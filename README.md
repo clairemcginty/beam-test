@@ -1,6 +1,23 @@
 # beam-test
 
-Created to test Beam 2.36 null values after join. We noticed this in Scio's [join](https://github.com/spotify/scio/blob/main/scio-core/src/main/scala/com/spotify/scio/util/ArtisanJoin.scala#L103)
+Created to test Beam features.
+
+### Runner V2 OOM Test
+
+To run the job with RunnerV2, resulting in an OOM:
+
+```
+sbt "runMain clairem.data.RunnerV2Test --runner=DataflowRunner --region=us-central1 --project=[[PROJECT]] --experiments=use_runner_v2 --n=10"
+```
+
+To run the job with Runner Classic, which succeeds:
+
+```
+sbt "runMain clairem.data.RunnerV2Test --runner=DataflowRunner --region=us-central1 --project=[[PROJECT]] --n=10"
+```
+
+### Null Values after Join Test
+Context: We noticed this in Scio's [join](https://github.com/spotify/scio/blob/main/scio-core/src/main/scala/com/spotify/scio/util/ArtisanJoin.scala#L103)
 implementation and were able to confirm it happening with Beam CGBK primitive, too.
 
 To run the job:
